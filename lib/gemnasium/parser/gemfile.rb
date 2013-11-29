@@ -43,7 +43,6 @@ module Gemnasium
 
         def dependency(match)
           opts = Patterns.options(match["opts"])
-          return nil if exclude?(match, opts)
           clean!(match, opts)
           name, reqs = match["name"], [match["req1"], match["req2"]].compact
           Bundler::Dependency.new(name, reqs, opts).tap do |dep|
